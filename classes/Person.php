@@ -3,6 +3,11 @@
 class Person
 {
     /**
+     * @var int
+     */
+    private $idPerson = 0;
+
+    /**
      * @var string
      */
     private $firstname = "";
@@ -126,5 +131,21 @@ class Person
     public function setPassword($password)
     {
         $this->password = $password;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdPerson(): int
+    {
+        return $this->idPerson;
+    }
+
+    /**
+     * @param int $idPerson
+     */
+    public function setIdPerson(int $idPerson)
+    {
+        $this->idPerson = $idPerson;
     }
 }
