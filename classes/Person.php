@@ -27,24 +27,6 @@ class Person{
 	private $password;
 	
 	/*
-	* instantiate the object
-	* @param string
-	* @param string
-	* @param string
-	* @param string
-	* @param string
-	* @param string
-	*/
-	public function __construct ((string) $firstname, (string) $lastname, (string) $email, (string) $licensePlate, (string) $picture, (string) $password){
-		$this->setFirstname($firstname); 
-		$this->setLastname($lastname);
-		$this->setEmail($email);
-		$this->setLicensePlate($licensePlate);
-		$this->setPicture($picture);
-		$this->setPassword($password);
-	}
-	
-	/*
 	* @return string
 	*/
 	public function getFirstname (){
@@ -53,7 +35,7 @@ class Person{
 	/*
 	* @param string
 	*/
-	public function setFirstname ((string) $firstname){
+	public function setFirstname (string $firstname){
 		$this->firstname = $firstname;
 	}
 	
@@ -66,7 +48,7 @@ class Person{
 	/*
 	* @param string
 	*/
-	public function setLastname ((string) $lastname){
+	public function setLastname (string $lastname){
 		$this->lastname = $lastname;
 	}
 	/*
@@ -78,7 +60,7 @@ class Person{
 	/*  
 	* @param string
 	*/
-	public function setEmail ((string) $email){
+	public function setEmail (string $email){
 		$this->email = $email;
 	}
 	/*
@@ -90,7 +72,7 @@ class Person{
 	/*  
 	* @param string
 	*/
-	public function setLicensePlate ((string) $licensePlate){
+	public function setLicensePlate (string $licensePlate){
 		$this->licensePlate = $licensePlate;
 	}
 	/*
