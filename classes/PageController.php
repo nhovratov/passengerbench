@@ -37,9 +37,7 @@ class PageController
             default:
                 $title = "Startseite";
                 $action = "startpage";
-                $pageContent['content'] = "template startseite";
-                $person = $this->propertyMapper->mapProperties('Person', 1);
-                DebuggerUtility::var_dump($person);
+                $pageContent['content'] = "";
         }
         $content .= $this->page->parseTemplate(TEMPLATEPATH . "$action.html", $pageContent);
         return [
