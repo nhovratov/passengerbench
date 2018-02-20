@@ -31,6 +31,9 @@ class PropertyMapper
         $table = strtolower($classname);
         $result = $this->db->executeQuery("SELECT * FROM $table WHERE id_$table = $id")->fetch_assoc();
         foreach ($result as $key => $value) {
+            if (is_null($value)) {
+                continue;
+            }
             $setter = "set" . $this::underscoredToUpperCamelCase($key);
             $prefix = substr($key, 0, 3);
             if ($prefix === "id_") {

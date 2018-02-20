@@ -5,22 +5,22 @@ class PersonDemandsTrip
     /**
      * @var Person
      */
-    private $passenger;
+    private $passenger = null;
 
     /**
      * @var Trip
      */
-    private $trip;
+    private $trip = null;
 
     /**
      * @var int
      */
-    private $passengerCount;
+    private $passengerCount = 0;
 
     /**
      * @var boolean
      */
-    private $accepted;
+    private $accepted = false;
 
     /**
      * @return Person

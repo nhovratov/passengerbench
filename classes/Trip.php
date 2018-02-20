@@ -9,31 +9,31 @@ class Trip
     /**
      * @var DateTime
      */
-    private $startTime;
+    private $startTime = null;
     /**
      * @var Person
      */
-    private $driver;
+    private $driver = null;
     /**
      * @var double
      */
-    private $departureLatitude;
+    private $departureLatitude = 0.0;
     /**
      * @var double
      */
-    private $departureLongitude;
+    private $departureLongitude = 0.0;
     /**
      * @var double
      */
-    private $destinationLatitude;
+    private $destinationLatitude = 0.0;
     /**
      * @var double
      */
-    private $destinationLongitude;
+    private $destinationLongitude = 0.0;
     /**
      * @var int
      */
-    private $availableSeats;
+    private $availableSeats = 0;
 
     /**
      * @return DateTime

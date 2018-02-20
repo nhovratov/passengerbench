@@ -9,15 +9,15 @@ class Station
     /**
      * @var string
      */
-    private $name;
+    private $name = "";
     /**
      * @var double
      */
-    private $latitude;
+    private $latitude = 0.0;
     /**
      * @var double
      */
-    private $longitude;
+    private $longitude = 0.0;
 
     /**
      * @return int
