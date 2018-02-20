@@ -1,13 +1,4 @@
 <?php
-// GET-Parametername for patterns
-define('PATTERNPARAMETERNAME', 'pattern');
-// Placeholder in the template for certain content
-define('PATTERNNAME', 'pattern');
-define('IMGFILENAME', 'imgfilename');
-define('CAPTION', 'caption');
-define('SHORTTEXT', 'shorttext');
-define('LONGTEXT', 'longtext');
-define('SIMILARPATTERNS', 'similarpatterns');
 
 /**
  * @author Boas Lehrke
@@ -47,7 +38,8 @@ class PageController
                 $title = "Startseite";
                 $action = "startpage";
                 $pageContent['content'] = "template startseite";
-                /** @var DBConnection $db */
+                $person = $this->propertyMapper->mapProperties('Person', 1);
+                DebuggerUtility::var_dump($person);
         }
         $content .= $this->page->parseTemplate(TEMPLATEPATH . "$action.html", $pageContent);
         return [
