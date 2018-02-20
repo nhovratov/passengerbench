@@ -8,10 +8,38 @@
     <meta name="description"
           content="Here is a short description for the page. This text is displayed e. g. in search engine result listings.">
     <base href="[[*baseUrl]]"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-[[*content]]
-<footer class="footer">
+<header class="header">
+    <div class="header-container">
+        <div class="jumbotron">
+            <div class="container d-flex">
+                <h1>Mitfahrbank</h1>
+                <form class="ml-auto">
+                    <p>Login</p>
+                    <div class="mb-2">
+                        <input placeholder="Benutzername"/>
+                    </div>
+                    <div>
+                        <input placeholder="Passwort">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                [[*content]]
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="footer text-center jumbotron">
     &copy; IT-B1-15 [[*year]]
 </footer>
 </body>
