@@ -19,7 +19,7 @@ public function showCurrentTrips()
 {
 	$query=	 $this->baseQuery. "WHERE start_time BETWEEN Now() AND DATE_ADD(NOW(), INTERVAL 1 DAY)";
 	$result = $this->DBConnection->executeQueryPrepared($query, array());
-	return result;
+	return $result;
 }
 // this function shows all trips by one specified driver
 function getTripsByDriver($ID)
@@ -27,7 +27,7 @@ function getTripsByDriver($ID)
 	$bindParameters= array($ID);
 	$query= $this->baseQuery. "WHERE `person`.`id_person`= ?";
 	$result = $this->DBConnection->executeQueryPrepared($query, $bindParameters);
-	return result;
+	return $result;
 }
 // this function shows all trips between the tow timestamps
 function getTripsBetween($startTime, $stopTime)
@@ -35,7 +35,7 @@ function getTripsBetween($startTime, $stopTime)
 	$bindParameters= array($startTime, $stopTime);
 	$query=$this->baseQuery. "WHERE start_time BETWEEN ? AND ?";
 	$result = $this->DBConnection->executeQueryPrepared($query, $bindParameters);
-	return result;
+	return $result;
 }
 // this function inserts a new trip into the table trip
 function createTrip($startTime,$driver,$departure_latitude,$departure_longitude,$destination_latitude, $destination_longitude,$avaiableSeats)
@@ -46,7 +46,7 @@ function createTrip($startTime,$driver,$departure_latitude,$departure_longitude,
 			VALUES
 			(?,?,?,?,?,?,?)";
 	$result = $this->DBConnection->executeQueryPrepared($query, $information);
-	return result;	
+	return $result;	
 }
 // this function changes the driver of a trip
 function setDriver($TripID, $id_driver)
@@ -56,7 +56,7 @@ function setDriver($TripID, $id_driver)
 				SET id_driver = ?
 				WHERE trip_id = ?";
 	$result = $this->DBConnection->executeQueryPrepared($query, $bindParameters);
-	return result;
+	return $result;
 }
 function deleteTrip($TripID)
 {
@@ -64,7 +64,7 @@ function deleteTrip($TripID)
 	$query ="DELETE FROM trip
 			WHERE id_trip =?";
 	$result = $this->DBConnection->executeQueryPrepared($query, $bindParameters);
-	return result;
+	return $result;
 }	
 }
 
