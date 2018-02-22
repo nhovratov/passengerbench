@@ -71,6 +71,48 @@ class DBConnection
     {
         return $this->conn->query($this->conn->real_escape_string($query));
     }
+	
+	/**
+     * This function will execute a prepared SQL-Query and return the result.
+     * @param string 
+     * @param array 
+     * @return Result
+     */
+	public function executeQueryPrepared(string $query, array $parameter)
+	{
+		/* create a prepared statement */
+		if ($stmt = mysqli_prepare($this->conn, $query)) {
+			
+			// prepare type-string
+			$typeString = '';
+			for($i = 0; $i < count($parameter); $i++)
+			{
+				$var = $parameter[$i];
+				if(is_int($var))
+				{
+					$typeString .= 'i';
+				} 
+				else if(is_double($var))
+				{
+					$typeString .= 'd';
+				} 
+				else 
+				{
+					$typeString .= 's';
+				}
+			}
+			/* bind parameters */
+			call_user_func_array(array($stmt, "bind_param"), array_merge(array($typeString), $parameter));
+
+			/* execute query */
+			$stmt->execute();
+
+			/* fetch value */
+			$result = $stmt->get_result();
+			
+			return $result->fetch_all(MYSQLI_ASSOC);
+		}
+	}
 
     //This function is to prevent to create another instance of the DBConnector, if someone trys to clone the instance it will fail.
     protected function __clone()
