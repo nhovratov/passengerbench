@@ -34,6 +34,7 @@ class DBConnection
         $this->db = $dbConfig["db"];
 
         $this->conn = mysqli_connect($this->url, $this->user, $this->pw, $this->db);
+        $this->conn->set_charset('utf8');
 
         if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);
@@ -106,13 +107,10 @@ class DBConnection
 			/* execute query */
 			$stmt->execute();
 
-			/* bind result variables */
-			$stmt->bind_result($result);
-
 			/* fetch value */
-			$stmt->fetch();
+			$result = $stmt->get_result();
 			
-			return $result;
+			return $result->fetch_all(MYSQLI_ASSOC);
 		}
 	}
 
