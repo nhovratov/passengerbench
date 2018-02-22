@@ -1,6 +1,4 @@
 <?php
-require_once ('DBConnection.php');
-
 class TripController
 {
 
