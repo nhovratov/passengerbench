@@ -37,9 +37,15 @@ class PageController
             default:
                 $title = "Startseite";
                 $action = "startpage";
-                $pageContent['content'] = "";
+                $variables = [];
+                $stationsJs = '';
+                $stations = DBConnection::getInstance()->executeQuery("SELECT * FROM station")->fetch_all(MYSQLI_ASSOC);
+                foreach ($stations as $station) {
+                    $stationsJs .= "addMarker(layer_markers, $station[longitude], $station[latitude], '$station[name]');\n";
+                }
+                $variables['stationsJs'] = $stationsJs;
         }
-        $content .= $this->page->parseTemplate(TEMPLATEPATH . "$action.html", $pageContent);
+        $content .= $this->page->parseTemplate(TEMPLATEPATH . "$action.html", $variables);
         return [
             'title' => $title,
             'content' => $content
