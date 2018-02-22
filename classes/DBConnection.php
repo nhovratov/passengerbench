@@ -106,13 +106,10 @@ class DBConnection
 			/* execute query */
 			$stmt->execute();
 
-			/* bind result variables */
-			$stmt->bind_result($result);
-
 			/* fetch value */
-			$stmt->fetch();
+			$result = $stmt->get_result();
 			
-			return $result;
+			return $result->fetch_all(MYSQLI_ASSOC);
 		}
 	}
 
