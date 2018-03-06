@@ -78,16 +78,18 @@ class DBConnection
      * @param array 
      * @return Result
      */
-	public function executeQueryPrepared(string $query, array $parameter)
+	public function executeQueryPrepared(string $query, array $parameters)
 	{
 		/* create a prepared statement */
 		if ($stmt = mysqli_prepare($this->conn, $query)) {
 			
-			// prepare type-string
+			/* prepare type-string AND array with references */
+			$queryParameters = array();
 			$typeString = '';
-			for($i = 0; $i < count($parameter); $i++)
+			for($i = 0; $i < count($parameters); $i++)
 			{
-				$var = $parameter[$i];
+				$queryParameters[$i] = &$parameters[$i];
+				$var = $parameters[$i];
 				if(is_int($var))
 				{
 					$typeString .= 'i';
@@ -101,8 +103,12 @@ class DBConnection
 					$typeString .= 's';
 				}
 			}
-			/* bind parameters */
-			call_user_func_array(array($stmt, "bind_param"), array_merge(array($typeString), $parameter));
+			
+			/* bind parameters if parameters given */
+			if($parameters != null && !empty($parameters))
+			{
+				call_user_func_array(array($stmt, "bind_param"), array_merge(array($typeString), $parameters));
+			}
 
 			/* execute query */
 			$stmt->execute();
