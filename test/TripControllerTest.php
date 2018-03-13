@@ -1,26 +1,84 @@
 <?php
-echo '<pre>';
-
 function getConfig() {
     return require("../config" . DIRECTORY_SEPARATOR . "config.php");
 }
-
+require_once('../classes/DBConnection.php');
 require_once('../classes/TripController.php');
 
-$tripController = new TripController();
+/* test class for the trip controller
+* 
+*/
+class TripControllerTest{
+	
+	/* test showCurrentTrips method 
+	*  calls method to get all trips, that are currently available
+	*/
+	public function testShowCurrentTrips(){
+		$tripController = new TripController();
+		$result = $tripController->showCurrentTrips();
+		
+		assert(!empty($result), 'showCurrentTrips: Es war eine Rückgabe vorhanden!');
+	}
+	
+	/* test createTrip and deleteTrip methods 
+	*  creates a trip , deletes a trip
+	*/
+	public function testCreateAndDeleteTrip(){
+		$tripController = new TripController();
+		$result = $tripController->createTrip('2018-02-23 10:10:10', 1, 9.2, 9.2, 10.3, 10.3, 5);
+		assert($result === true, 'Fahrt konnte erfolgreich angelegt werden!');
+		
+		$result = $tripController->getTripsByDriver(1);
+		$result = $tripController->deleteTrip($result[count($result)-1]['id_trip']);
+		assert($result === true, 'Fahrt konnte erfolgreich entfernt werden!');
+	}
+	
+	/* OBSOLETE, because delete is used in create, too
+	*  test deleteTrips method
+	*  deletes a trip
+	*/
+	public function testDeleteTrip(){
+		$tripController = new TripController();
+		$result = $tripController->deleteTrip(19);
+		
+		assert($result === true, 'Fahrt konnte erfolgreich entfernt werden!');
+	}
+	
+	/* test setDriver method 
+	*  sets a driver of an existing trip
+	*/
+	public function testSetDriver(){
+		$tripController = new TripController();
+		$result = $tripController->setDriver(21, 2);
+		
+		assert($result === true, 'Fahrt konnte erfolgreich angepasst werden!');
+	}
+	
+	/* test getTripsBetween method 
+	*  calls method to get all trips, between two specified dates
+	*/
+	public function testGetTripsBetween(){
+		$tripController = new TripController();
+		$result = $tripController->getTripsBetween('2018-02-23 07:10:10', '2018-02-24 10:10:10');
+		
+		assert(!empty($result), 'getTripsBetween: Es war eine Rückgabe vorhanden!');
+	}
+	
+	/* test getTripsByDriver method 
+	*  calls method to get all trips, that belong to a driver
+	*/
+	public function testGetTripsByDriver(){
+		$tripController = new TripController();
+		$result = $tripController->getTripsByDriver(2);
+		
+		assert(!empty($result), 'getTripsByDriver: Es war eine Rückgabe vorhanden!');
+	}
+}
 
-print_r('createTrip: <br/>' . $tripController->createTrip('2018-02-23 10:10:10', 1, 9.2, 9.2, 10.3, 10.3, 5));
-echo '<br/>';
-print_r('showCurrentTrips: <br/>' . $tripController->showCurrentTrips());
-echo '<br/>';
-//print_r('deleteTrip: <br/>' . $tripController->deleteTrip(3));
-echo '<br/>';
-print_r('setDriver: <br/>' . $tripController->setDriver(2, 2));
-echo '<br/>';
-print_r('getTripsBetween: <br/>' . $tripController->getTripsBetween('2018-02-23 07:10:10', '2018-02-24 10:10:10'));
-echo '<br/>';
-print_r('getTripsByDriver: <br/>' . $tripController->getTripsByDriver(2));
-echo '<br/>';
-
-
-echo '</pre>';
+// calling test methods
+$test = new TripControllerTest();
+$test->testShowCurrentTrips();
+$test->testCreateAndDeleteTrip();
+$test->testSetDriver();
+$test->testGetTripsBetween();
+$test->testGetTripsByDriver();

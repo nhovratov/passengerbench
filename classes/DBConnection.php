@@ -82,7 +82,6 @@ class DBConnection
 	{
 		/* create a prepared statement */
 		if ($stmt = mysqli_prepare($this->conn, $query)) {
-			
 			/* prepare type-string AND array with references */
 			$queryParameters = array();
 			$typeString = '';
@@ -105,18 +104,24 @@ class DBConnection
 			}
 			
 			/* bind parameters if parameters given */
-			if($parameters != null && !empty($parameters))
+			if(($parameters != null) && (!empty($parameters)))
 			{
 				call_user_func_array(array($stmt, "bind_param"), array_merge(array($typeString), $parameters));
 			}
 
 			/* execute query */
-			$stmt->execute();
-
+			$status = $stmt->execute();
+			
 			/* fetch value */
 			$result = $stmt->get_result();
 			
-			return $result->fetch_all(MYSQLI_ASSOC);
+			/* Check if Query returned data */
+			if(is_bool($result)){
+				return $status;
+			}
+			
+			$result = $result->fetch_all(MYSQLI_ASSOC);
+			return $result;
 		}
 	}
 

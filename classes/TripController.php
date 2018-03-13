@@ -2,7 +2,7 @@
 class TripController
 {
 
-private $baseQuery= "SELECT `start_time`,`available_seats`, `trip`.`departure_latitude`,`trip`.`departure_longitude`,`trip`.`destination_latitude`,`trip`.`destination_longitude`,`person`.`firstname`,`person`.`lastname`,`person`.`license_plate`
+private $baseQuery= "SELECT `id_trip`,`start_time`,`available_seats`, `trip`.`departure_latitude`,`trip`.`departure_longitude`,`trip`.`destination_latitude`,`trip`.`destination_longitude`,`person`.`firstname`,`person`.`lastname`,`person`.`license_plate`
 					FROM trip
 					INNER JOIN `person` ON `trip`.`id_driver` = `person`.`id_person` ";
 private $DBConnection = null;	
@@ -47,12 +47,12 @@ function createTrip($startTime,$driver,$departure_latitude,$departure_longitude,
 	return $result;	
 }
 // this function changes the driver of a trip
-function setDriver($TripID, $id_driver)
+function setDriver($tripID, $id_driver)
 {
-	$bindParameters=array($id_driver,$TripID);
+	$bindParameters=array($id_driver,$tripID);
 	$query = "UPDATE trip 
 				SET id_driver = ?
-				WHERE trip_id = ?";
+				WHERE id_trip = ?";
 	$result = $this->DBConnection->executeQueryPrepared($query, $bindParameters);
 	return $result;
 }
