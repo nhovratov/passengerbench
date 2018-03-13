@@ -9,8 +9,17 @@
  */
 class PageController
 {
+	/**
+	 * @var Page
+	 */
     private $page = null;
+	/**
+	 * @var PropertyMapper
+	 */
     private $propertyMapper = null;
+	/**
+	 * @var String
+	 */
     private $layout;
 
     /**
@@ -25,8 +34,8 @@ class PageController
 
     /**
      * Does a specific action, predefined by the action-parameter.
-     * Returns the parse site
-     * @param $action
+     * Returns the parsed site
+     * @param String $action
      * @return array
      */
     public function initializeAction($action)
@@ -52,6 +61,12 @@ class PageController
         ];
     }
 
+	/**
+	 *	Renders the view by the given action
+	 *
+	 * @param String $action
+	 * @return String
+	 */
     public function renderView($action)
     {
         $settings = [
