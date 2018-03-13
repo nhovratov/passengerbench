@@ -1,8 +1,16 @@
 <?php
 class TripController
 {
+/**
+ * the class processes data from the frontend and has 2 functions. insert trips into the database,
+ * and return data about the offered trips from an to the frontend
+**/
 
-private $baseQuery= "SELECT `id_trip`,`start_time`,`available_seats`, `trip`.`departure_latitude`,`trip`.`departure_longitude`,`trip`.`destination_latitude`,`trip`.`destination_longitude`,`person`.`firstname`,`person`.`lastname`,`person`.`license_plate`
+/**
+ * basequery is a string for most of the sql statements. it contains all the data we want to show about a trip
+ * without any specifying Where conditions. The Where condition follows in the functions.
+**/
+private $baseQuery= "SELECT `start_time`,`available_seats`, `trip`.`departure_latitude`,`trip`.`departure_longitude`,`trip`.`destination_latitude`,`trip`.`destination_longitude`,`person`.`firstname`,`person`.`lastname`,`person`.`license_plate`
 					FROM trip
 					INNER JOIN `person` ON `trip`.`id_driver` = `person`.`id_person` ";
 private $DBConnection = null;	
@@ -11,15 +19,20 @@ private $DBConnection = null;
 function __construct()
 {
 	$this->DBConnection =  DBConnection::getInstance();
-}						
-// this function shows all trips between the current time and the next day
+}
+						
+/**
+ * this function shows all trips between the current time and the next 24 hours
+**/
 public function showCurrentTrips()
 {
 	$query=	 $this->baseQuery. "WHERE start_time BETWEEN Now() AND DATE_ADD(NOW(), INTERVAL 1 DAY)";
 	$result = $this->DBConnection->executeQueryPrepared($query, array());
 	return $result;
 }
-// this function shows all trips by one specified driver
+/**
+ * this function shows all trips by one specified driver
+**/
 function getTripsByDriver($ID)
 {
 	$bindParameters= array($ID);
@@ -27,7 +40,9 @@ function getTripsByDriver($ID)
 	$result = $this->DBConnection->executeQueryPrepared($query, $bindParameters);
 	return $result;
 }
-// this function shows all trips between the tow timestamps
+/**
+ * this function shows all trips between the two timestamps
+**/
 function getTripsBetween($startTime, $stopTime)
 {
 	$bindParameters= array($startTime, $stopTime);
@@ -35,7 +50,9 @@ function getTripsBetween($startTime, $stopTime)
 	$result = $this->DBConnection->executeQueryPrepared($query, $bindParameters);
 	return $result;
 }
-// this function inserts a new trip into the table trip
+/**
+ * this function inserts a new trip into the table trip
+**/
 function createTrip($startTime,$driver,$departure_latitude,$departure_longitude,$destination_latitude, $destination_longitude,$avaiableSeats)
 {
 	$information = array($startTime,$driver,$departure_latitude,$departure_longitude,$destination_latitude,$destination_longitude,$avaiableSeats);
@@ -46,16 +63,23 @@ function createTrip($startTime,$driver,$departure_latitude,$departure_longitude,
 	$result = $this->DBConnection->executeQueryPrepared($query, $information);
 	return $result;	
 }
+/**
+ * this function shows all trips by one specified driver
+**/
 // this function changes the driver of a trip
-function setDriver($tripID, $id_driver)
+function setDriver($TripID, $id_driver)
 {
-	$bindParameters=array($id_driver,$tripID);
+	$bindParameters=array($id_driver,$TripID);
 	$query = "UPDATE trip 
 				SET id_driver = ?
-				WHERE id_trip = ?";
+				WHERE trip_id = ?";
 	$result = $this->DBConnection->executeQueryPrepared($query, $bindParameters);
 	return $result;
 }
+/**
+ * this function deletes a trip denpending on the id
+**/
+
 function deleteTrip($TripID)
 {
 	$bindParameters=array($TripID);
