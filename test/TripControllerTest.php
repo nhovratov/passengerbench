@@ -5,9 +5,10 @@ function getConfig() {
 require_once('../classes/DBConnection.php');
 require_once('../classes/TripController.php');
 
-/* test class for the trip controller
-* 
-*/
+/** 
+* Test class for the TripController class. 
+* Ensures, that all methods of the TripController work as intended.
+**/
 class TripControllerTest{
 	
 	/* test showCurrentTrips method 
