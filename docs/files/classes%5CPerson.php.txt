@@ -1,0 +1,152 @@
+<?php
+
+class Person
+{
+    /**
+     * @var int
+     */
+    private $idPerson = 0;
+
+    /**
+     * @var string
+     */
+    private $firstname = "";
+
+    /**
+     * @var string
+     */
+    private $lastname = "";
+
+    /**
+     * @var string
+     */
+    private $email = "";
+
+    /**
+     * @var string
+     */
+    private $licensePlate = "";
+
+    /**
+     * @var string
+     */
+    private $picture = "";
+
+    /**
+     * @var string
+     */
+    private $password = "";
+
+    /**
+     * @return int
+     */
+    public function getIdPerson(): int
+    {
+        return $this->idPerson;
+    }
+
+    /**
+     * @param int $idPerson
+     */
+    public function setIdPerson(int $idPerson)
+    {
+        $this->idPerson = $idPerson;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstname(): string
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * @param string $firstname
+     */
+    public function setFirstname(string $firstname)
+    {
+        $this->firstname = $firstname;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastname(): string
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * @param string $lastname
+     */
+    public function setLastname(string $lastname)
+    {
+        $this->lastname = $lastname;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail(string $email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLicensePlate(): string
+    {
+        return $this->licensePlate;
+    }
+
+    /**
+     * @param string $licensePlate
+     */
+    public function setLicensePlate(string $licensePlate)
+    {
+        $this->licensePlate = $licensePlate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPicture(): string
+    {
+        return $this->picture;
+    }
+
+    /**
+     * @param string $picture
+     */
+    public function setPicture(string $picture)
+    {
+        $this->picture = $picture;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password)
+    {
+        $this->password = $password;
+    }
+}
+

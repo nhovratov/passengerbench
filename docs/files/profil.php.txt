@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>WithDriveBank</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="./open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+		
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			
+			<div class="collapse navbar-collapse" id="navbarToggle">
+				<a class="navbar-brand" href="#">WithDriveBank</a>
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				  <li class="nav-item">
+					<a class="nav-link" href="#"><b><span class="oi oi-home"></span> Home</b></a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="#"><b><span class="oi oi-compass"></span> Fahrten</b></a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="#"><b><span class="oi oi-envelope-open"></span> Kontakt</b></a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="#"><b><span class="oi oi-book"></span> Impressum</b></a>
+				  </li>
+				</ul>
+				<div class="dropdown">
+				  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<span class="oi oi-person"></span>
+				  </button>
+				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<a class="dropdown-item active" href="#"><span class="oi oi-cog"></span> Profil bearbeiten</a>
+					<a class="dropdown-item" href="#"><span class="oi oi-envelope-closed"></span> Nachrichten</a>
+					<a class="dropdown-item" href="#"><span class="oi oi-compass"></span> Meine Fahrten</a>
+					<a class="dropdown-item" href="#"><span class="oi oi-power-standby"></span> Ausloggen</a>
+				  </div>
+				</div>
+			</div>
+		</nav>
+		<br>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card">
+					<img class="card-img-top img-responsive" src="./img/profil.jpg" alt="Card image cap">
+					<div class="card-body">
+						<button class="btn btn-warning btn-block">Bild bearbeiten</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<form method="POST" action="#">
+					<div class="form-group">
+						<label for="inputVorname">Vorname:</label>
+						<input class="form-control" type="text" id="inputVorname" placeholder="Vorname">
+					</div>
+					<div class="form-group">
+						<label for="inputNachname">Nachname:</label>
+						<input class="form-control" type="text" id="inputNachname" placeholder="Nachname">
+					</div>
+					<div class="form-group">
+						<label for="inputEMail">E-Mail Adresse:</label>
+						<input class="form-control" type="text" id="inputEMail" placeholder="E-Mail Adresse">
+					</div>
+					<div class="form-group">
+						<label for="inputKennzeichen">Kennzeichen:</label>
+						<input class="form-control" type="text" id="inputKennzeichen" placeholder="Kennzeichen">
+					</div>
+					<div class="form-group">
+						<div class="btn-group">
+							<button class="btn btn-success">Speichern</button>
+							<button class="btn btn-danger">Abbrechen</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
