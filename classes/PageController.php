@@ -34,7 +34,7 @@ class PageController
 
     /**
      * Does a specific action, predefined by the action-parameter.
-     * Returns the parsed site
+     * 
      * @param String $action
      * @return array
      */
@@ -62,7 +62,7 @@ class PageController
     }
 
 	/**
-	 *	Renders the view by the given action
+	 *	Renders the view defined by the action-parameter and return the rendered view
 	 *
 	 * @param String $action
 	 * @return String
