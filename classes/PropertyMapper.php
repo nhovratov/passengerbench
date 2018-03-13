@@ -1,9 +1,11 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: NIKITA
- * Date: 28.09.2017
- * Time: 11:55
+ * Simple representation of an ORM (Object Relation Mapping)
+ * Given a specific class and id this method looks for a table called like the class in lowercase e.g. Cat -> cat
+ * Then all column values are mapped to a new instance as its properties.
+ * Tablecolumns must be named in snakecase and class properties in lowerCamelCase e.g. head_size -> headSize
+ * In case a column is prefixed with "id_" it is assumed it's a foreign key. This means it's a composition
+ * and it is resolved by calling this method recursively.
  */
 class PropertyMapper
 {
@@ -14,13 +16,6 @@ class PropertyMapper
         $this->db = DBConnection::getInstance();
     }
     /**
-     * Simple representation of an ORM (Object Relation Mapping)
-     * Given a specific class and id this method looks for a table called like the class in lowercase e.g. Cat -> cat
-     * Then all column values are mapped to a new instance as its properties.
-     * Tablecolumns must be named in snakecase and class properties in lowerCamelCase e.g. head_size -> headSize
-     * In case a column is prefixed with "id_" it is assumed it's a foreign key. This means it's a composition
-     * and it is resolved by calling this method recursively.
-     *
      * @param $classname
      * @param $id
      * @return mixed
