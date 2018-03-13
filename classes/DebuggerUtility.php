@@ -27,6 +27,8 @@
 /**
  * A debugging utility class
  *
+ * Used to print pretty variable dumps
+ *
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  * @api
  */
